@@ -1,0 +1,119 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3307
+-- Generation Time: Dec 07, 2025 at 12:15 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `apotek_mini`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `obat`
+--
+
+CREATE TABLE `obat` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `stok` int(11) NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  `keterangan` text DEFAULT NULL,
+  `terjual` int(11) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `obat`
+--
+
+INSERT INTO `obat` (`id`, `nama`, `harga`, `stok`, `gambar`, `keterangan`, `terjual`, `created_at`) VALUES
+(1, 'Paracetamol 500mg', 5000, 100, 'paracetamol.jpg', 'Obat pereda demam dan nyeri', 150, '2025-12-07 09:17:53'),
+(2, 'Amoxicillin 500mg', 15000, 80, 'amoxicillin.jpg', 'Antibiotik untuk infeksi bakteri', 120, '2025-12-07 09:17:53'),
+(3, 'Vitamin C 1000mg', 25000, 150, 'vitaminc.jpg', 'Suplemen vitamin C untuk daya tahan tubuh', 200, '2025-12-07 09:17:53'),
+(4, 'OBH Combi', 18000, 60, 'obh.jpg', 'Obat batuk berdahak', 90, '2025-12-07 09:17:53'),
+(5, 'Antasida', 8000, 70, 'antasida.jpg', 'Obat maag dan asam lambung', 85, '2025-12-07 09:17:53'),
+(6, 'Promag', 12000, 90, 'promag.jpg', 'Obat untuk mengatasi maag', 110, '2025-12-07 09:17:53'),
+(7, 'Bodrex', 7000, 120, 'bodrex.jpg', 'Obat sakit kepala', 95, '2025-12-07 09:17:53'),
+(8, 'Mixagrip', 9000, 100, 'mixagrip.jpg', 'Obat flu dan demam', 88, '2025-12-07 09:17:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id` int(11) NOT NULL,
+  `id_obat` int(11) NOT NULL,
+  `nama_pembeli` varchar(100) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_hp` varchar(20) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `status` varchar(50) DEFAULT 'Menunggu Konfirmasi',
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `obat`
+--
+ALTER TABLE `obat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_obat` (`id_obat`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `obat`
+--
+ALTER TABLE `obat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

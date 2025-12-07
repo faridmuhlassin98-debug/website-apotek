@@ -1,3 +1,15 @@
+<?php
+include 'koneksi.php';
+session_start();
+
+// Query untuk mengambil data transaksi beserta nama obat
+$query = "SELECT t.*, o.nama AS nama_obat 
+          FROM transaksi t 
+          JOIN obat o ON t.id_obat = o.id 
+          ORDER BY t.id DESC";
+$result = mysqli_query($conn, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -24,23 +36,25 @@
         </div>
     </div>
 
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <nav>
-            <a href="beranda.html">
+            <a href="beranda.php">
                 <i class="fas fa-home"></i>
                 Beranda
             </a>
-            <a href="daftar_obat.html">
+            <a href="daftar_obat.php">
                 <i class="fas fa-pills"></i>
                 Daftar Obat
             </a>
-            <a href="transaksi.html" class="active">
+            <a href="transaksi.php" class="active">
                 <i class="fas fa-file-invoice"></i>
                 Transaksi
             </a>
         </nav>
     </div>
+
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
@@ -50,13 +64,14 @@
                     <i class="fas fa-file-invoice"></i> Riwayat Transaksi
                 </h1>
 
+
                 <!-- Transaksi 1 -->
                 <div class="transaksi-item">
                     <div class="transaksi-header">
                         <div>
                             <h3>Paracetamol 500mg</h3>
                             <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i> 
+                                <i class="fas fa-calendar"></i>
                                 07/12/2024 14:30
                             </p>
                         </div>
@@ -64,6 +79,7 @@
                             <i class="fas fa-clock"></i> Menunggu Konfirmasi
                         </span>
                     </div>
+
 
                     <div class="transaksi-details">
                         <div>
@@ -80,13 +96,14 @@
                     </div>
                 </div>
 
+
                 <!-- Transaksi 2 -->
                 <div class="transaksi-item">
                     <div class="transaksi-header">
                         <div>
                             <h3>Vitamin C 1000mg</h3>
                             <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i> 
+                                <i class="fas fa-calendar"></i>
                                 06/12/2024 10:15
                             </p>
                         </div>
@@ -94,6 +111,7 @@
                             <i class="fas fa-clock"></i> Menunggu Konfirmasi
                         </span>
                     </div>
+
 
                     <div class="transaksi-details">
                         <div>
@@ -110,13 +128,14 @@
                     </div>
                 </div>
 
+
                 <!-- Transaksi 3 -->
                 <div class="transaksi-item">
                     <div class="transaksi-header">
                         <div>
                             <h3>Amoxicillin 500mg</h3>
                             <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i> 
+                                <i class="fas fa-calendar"></i>
                                 05/12/2024 16:45
                             </p>
                         </div>
@@ -124,6 +143,7 @@
                             <i class="fas fa-clock"></i> Menunggu Konfirmasi
                         </span>
                     </div>
+
 
                     <div class="transaksi-details">
                         <div>
@@ -140,13 +160,14 @@
                     </div>
                 </div>
 
+
                 <!-- Transaksi 4 -->
                 <div class="transaksi-item">
                     <div class="transaksi-header">
                         <div>
                             <h3>OBH Combi</h3>
                             <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i> 
+                                <i class="fas fa-calendar"></i>
                                 04/12/2024 09:20
                             </p>
                         </div>
@@ -154,6 +175,7 @@
                             <i class="fas fa-clock"></i> Menunggu Konfirmasi
                         </span>
                     </div>
+
 
                     <div class="transaksi-details">
                         <div>
@@ -170,13 +192,14 @@
                     </div>
                 </div>
 
+
                 <!-- Transaksi 5 -->
                 <div class="transaksi-item">
                     <div class="transaksi-header">
                         <div>
                             <h3>Promag</h3>
                             <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i> 
+                                <i class="fas fa-calendar"></i>
                                 03/12/2024 13:55
                             </p>
                         </div>
@@ -184,6 +207,7 @@
                             <i class="fas fa-clock"></i> Menunggu Konfirmasi
                         </span>
                     </div>
+
 
                     <div class="transaksi-details">
                         <div>
@@ -203,11 +227,12 @@
         </div>
     </div>
 
+
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
-            
+           
             sidebar.classList.toggle('hidden');
             mainContent.classList.toggle('expanded');
         }

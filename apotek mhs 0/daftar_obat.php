@@ -1,3 +1,13 @@
+<?php
+// daftar_obat.php - Halaman Daftar Obat
+include 'koneksi.php';
+session_start();
+
+// Ambil semua obat
+$query = "SELECT * FROM obat ORDER BY nama ASC";
+$result = mysqli_query($conn, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -27,15 +37,15 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <nav>
-            <a href="beranda.html">
+            <a href="beranda.php">
                 <i class="fas fa-home"></i>
                 Beranda
             </a>
-            <a href="daftar_obat.html" class="active">
+            <a href="daftar_obat.php" class="active">
                 <i class="fas fa-pills"></i>
                 Daftar Obat
             </a>
-            <a href="transaksi.html">
+            <a href="transaksi.php">
                 <i class="fas fa-file-invoice"></i>
                 Transaksi
             </a>
@@ -53,7 +63,7 @@
                 <div class="obat-grid">
                     <!-- Obat 1 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300" alt="Paracetamol">
+                        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=300" alt="Paracetamol">
                         <div class="obat-card-content">
                             <h3>Paracetamol 500mg</h3>
                             <p>Obat pereda demam dan nyeri</p>
@@ -61,7 +71,7 @@
                                 <div class="obat-price">Rp 5.000</div>
                                 <div class="obat-stock">Stok: 100</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=1" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
@@ -70,15 +80,15 @@
 
                     <!-- Obat 2 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=300" alt="Amoxicillin">
-                        <div class="obat_card-content">
+                        <img src="https://images.unsplash.com/photo-1730388843790-f753ecf9ba94?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Amoxicillin">
+                        <div class="obat-card-content">
                             <h3>Amoxicillin 500mg</h3>
                             <p>Antibiotik untuk infeksi bakteri</p>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
                                 <div class="obat-price">Rp 15.000</div>
                                 <div class="obat-stock">Stok: 80</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=2" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
@@ -87,7 +97,7 @@
 
                     <!-- Obat 3 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1550572017-4870748dce1e?w=300" alt="Vitamin C">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300" alt="Vitamin C">
                         <div class="obat-card-content">
                             <h3>Vitamin C 1000mg</h3>
                             <p>Suplemen vitamin C untuk daya tahan tubuh</p>
@@ -95,7 +105,7 @@
                                 <div class="obat-price">Rp 25.000</div>
                                 <div class="obat-stock">Stok: 150</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=3" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
@@ -112,7 +122,7 @@
                                 <div class="obat-price">Rp 18.000</div>
                                 <div class="obat-stock">Stok: 60</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=4" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
@@ -129,7 +139,7 @@
                                 <div class="obat-price">Rp 8.000</div>
                                 <div class="obat-stock">Stok: 70</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=5" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
@@ -146,7 +156,7 @@
                                 <div class="obat-price">Rp 12.000</div>
                                 <div class="obat-stock">Stok: 90</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=6" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
@@ -155,7 +165,7 @@
 
                     <!-- Obat 7 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=300" alt="Bodrex">
+                        <img src="https://plus.unsplash.com/premium_photo-1671721439617-491242a0507f?q=80&w=394&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bodrex">
                         <div class="obat-card-content">
                             <h3>Bodrex</h3>
                             <p>Obat sakit kepala</p>
@@ -163,7 +173,7 @@
                                 <div class="obat-price">Rp 7.000</div>
                                 <div class="obat-stock">Stok: 120</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=7" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
@@ -172,7 +182,7 @@
 
                     <!-- Obat 8 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300" alt="Mixagrip">
+                        <img src="https://plus.unsplash.com/premium_photo-1668487826871-2f2cac23ad56?q=80&w=812&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mixagrip">
                         <div class="obat-card-content">
                             <h3>Mixagrip</h3>
                             <p>Obat flu dan demam</p>
@@ -180,7 +190,7 @@
                                 <div class="obat-price">Rp 9.000</div>
                                 <div class="obat-stock">Stok: 100</div>
                             </div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=8" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>

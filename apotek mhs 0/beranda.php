@@ -1,3 +1,13 @@
+<?php
+// beranda.php - Halaman Beranda
+include 'koneksi.php';
+session_start();
+
+// Ambil obat terlaris
+$query_terlaris = "SELECT * FROM obat ORDER BY terjual DESC LIMIT 3";
+$result_terlaris = mysqli_query($conn, $query_terlaris);
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -27,15 +37,15 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <nav>
-            <a href="beranda.html" class="active">
+            <a href="beranda.php" class="active">
                 <i class="fas fa-home"></i>
                 Beranda
             </a>
-            <a href="daftar_obat.html">
+            <a href="daftar_obat.php">
                 <i class="fas fa-pills"></i>
                 Daftar Obat
             </a>
-            <a href="transaksi.html">
+            <a href="transaksi.php">
                 <i class="fas fa-file-invoice"></i>
                 Transaksi
             </a>
@@ -73,7 +83,7 @@
                         <p>Khusus untuk mahasiswa</p>
                     </div>
                 </div>
-                <a href="daftar_obat.html" class="btn btn-primary btn-block" style="margin-top: 2rem;">
+                <a href="daftar_obat.php" class="btn btn-primary btn-block" style="margin-top: 2rem;">
                     Beli Obat Sekarang
                 </a>
             </div>
@@ -98,7 +108,7 @@
                             <p>Suplemen vitamin C untuk daya tahan tubuh</p>
                             <div class="obat-price">Rp 25.000</div>
                             <div class="obat-stock">Terjual: 200 pcs</div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=1" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli
                             </a>
@@ -116,7 +126,7 @@
                             <p>Obat pereda demam dan nyeri</p>
                             <div class="obat-price">Rp 5.000</div>
                             <div class="obat-stock">Terjual: 150 pcs</div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=2" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli
                             </a>
@@ -126,7 +136,7 @@
                     <!-- Obat 3 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="https://images.unsplash.com/photo-1550572017-4870748dce1e?w=300" alt="Amoxicillin">
+                            <img src="https://images.unsplash.com/photo-1730388843790-f753ecf9ba94?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Amoxicillin">
                             <div class="badge">#3</div>
                         </div>
                         <div class="obat-card-content">
@@ -134,7 +144,7 @@
                             <p>Antibiotik untuk infeksi bakteri</p>
                             <div class="obat-price">Rp 15.000</div>
                             <div class="obat-stock">Terjual: 120 pcs</div>
-                            <a href="beli_obat.html" class="btn btn-primary btn-block btn-icon">
+                            <a href="beli_obat.php?id=3" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli
                             </a>

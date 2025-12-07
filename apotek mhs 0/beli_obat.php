@@ -1,3 +1,61 @@
+<?php
+// beli_obat.php - Halaman Form Pembelian
+include 'koneksi.php';
+session_start();
+
+// Cek apakah ada ID obat
+if (!isset($_GET['id'])) {
+    header("Location: daftar_obat.php");
+    exit();
+}
+
+$id_obat = clean_input($_GET['id']);
+
+// Ambil data obat
+$query = "SELECT * FROM obat WHERE id = '$id_obat'";
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) == 0) {
+    header("Location: daftar_obat.php");
+    exit();
+}
+
+$obat = mysqli_fetch_assoc($result);
+
+// Proses pembelian
+if (isset($_POST['beli'])) {
+    $nama_pembeli = clean_input($_POST['nama']);
+    $alamat = clean_input($_POST['alamat']);
+    $no_hp = clean_input($_POST['no_hp']);
+    $jumlah = clean_input($_POST['jumlah']);
+    $total = $obat['harga'] * $jumlah;
+
+    // Validasi stok
+    if ($jumlah > $obat['stok']) {
+        $error = "Stok tidak mencukupi!";
+    } else {
+        // Insert transaksi
+        $query_insert = "INSERT INTO transaksi (id_obat, nama_pembeli, alamat, no_hp, jumlah, total) 
+                        VALUES ('$id_obat', '$nama_pembeli', '$alamat', '$no_hp', '$jumlah', '$total')";
+
+        if (mysqli_query($conn, $query_insert)) {
+            // Update stok dan terjual
+            $stok_baru = $obat['stok'] - $jumlah;
+            $terjual_baru = $obat['terjual'] + $jumlah;
+
+            $query_update = "UPDATE obat SET stok = '$stok_baru', terjual = '$terjual_baru' WHERE id = '$id_obat'";
+            mysqli_query($conn, $query_update);
+
+            $_SESSION['success'] = "Pembelian berhasil! Silakan cek halaman Transaksi.";
+            header("Location: transaksi.php");
+            exit();
+        } else {
+            $error = "Terjadi kesalahan saat memproses pembelian.";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -27,15 +85,15 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <nav>
-            <a href="beranda.html">
+            <a href="beranda.php">
                 <i class="fas fa-home"></i>
                 Beranda
             </a>
-            <a href="daftar_obat.html">
+            <a href="daftar_obat.php">
                 <i class="fas fa-pills"></i>
                 Daftar Obat
             </a>
-            <a href="transaksi.html">
+            <a href="transaksi.php">
                 <i class="fas fa-file-invoice"></i>
                 Transaksi
             </a>
@@ -52,17 +110,20 @@
 
                 <div id="alertContainer"></div>
 
+                                
+                <form method="POST">
+
                 <div class="detail-grid">
                     <!-- Detail Obat -->
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" alt="Paracetamol">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" alt="<?= htmlspecialchars($obat['nama'] ?? 'Obat') ?>">
                         <div class="product-info">
-                            <h2 style="color: #333; margin-bottom: 1rem;">Paracetamol 500mg</h2>
-                            <p style="color: #666; margin-bottom: 1rem;">Obat pereda demam dan nyeri yang efektif dan aman untuk seluruh keluarga</p>
-                            <div class="obat-price" style="margin-bottom: 0.5rem;">
-                                Rp 5.000
+                            <h2><?= htmlspecialchars($obat['nama'] ?? 'Paracetamol 500mg') ?></h2>
+                            <p><?= htmlspecialchars($obat['deskripsi'] ?? 'Obat berkualitas') ?></p>
+                            <div class="obat-price">
+                                Rp <?= number_format($obat['harga'] ?? 5000, 0, ',', '.') ?>
                             </div>
-                            <p style="color: #999; font-size: 0.9rem;">Stok tersedia: <span id="stokDisplay">100</span></p>
+                            <p>Stok tersedia: <span id="stokDisplay"><?= $obat['stok'] ?? 100 ?></span></p>
                         </div>
                     </div>
 
@@ -71,19 +132,19 @@
                         <div class="form-group">
                             <label for="nama">Nama Lengkap <span style="color: red;">*</span></label>
                             <input type="text" id="nama" name="nama" class="form-control" required 
-                                   placeholder="Masukkan nama lengkap">
+                                placeholder="Masukkan nama lengkap">
                         </div>
 
                         <div class="form-group">
                             <label for="alamat">Alamat <span style="color: red;">*</span></label>
                             <textarea id="alamat" name="alamat" class="form-control" required 
-                                      placeholder="Masukkan alamat lengkap"></textarea>
+                                    placeholder="Masukkan alamat lengkap"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="no_hp">No. Handphone <span style="color: red;">*</span></label>
                             <input type="tel" id="no_hp" name="no_hp" class="form-control" required 
-                                   placeholder="08xx-xxxx-xxxx">
+                                placeholder="08xx-xxxx-xxxx">
                         </div>
 
                         <div class="form-group">
@@ -93,8 +154,8 @@
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <input type="number" id="jumlah" name="jumlah" value="1" min="1" 
-                                       max="100" class="form-control quantity-input" 
-                                       onchange="updateTotal()">
+                                    max="<?= $obat['stok'] ?? 100 ?>" class="form-control quantity-input" 
+                                    onchange="updateTotal()">
                                 <button type="button" class="quantity-btn" onclick="increaseQty()">
                                     <i class="fas fa-plus"></i>
                                 </button>
@@ -105,16 +166,18 @@
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <span class="total-label">Total Pembayaran:</span>
                                 <span class="total-amount" id="totalAmount">
-                                    Rp 5.000
+                                    Rp <?= number_format(($obat['harga'] ?? 5000) * 1, 0, ',', '.') ?>
                                 </span>
                             </div>
                         </div>
 
-                        <button type="button" onclick="submitPembelian()" class="btn btn-primary btn-block">
+                        <button type="submit" name="beli" class="btn btn-primary btn-block">
                             <i class="fas fa-check-circle"></i> Konfirmasi Pembelian
                         </button>
                     </div>
                 </div>
+
+                </form>
             </div>
         </div>
     </div>
