@@ -1,0 +1,41 @@
+-- Database: apotek_mahasiswa
+
+CREATE DATABASE IF NOT EXISTS apotek_mahasiswa;
+USE apotek_mahasiswa;
+
+-- Tabel Obat
+CREATE TABLE IF NOT EXISTS obat (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    harga INT NOT NULL,
+    stok INT NOT NULL,
+    gambar VARCHAR(255),
+    keterangan TEXT,
+    terjual INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabel Transaksi
+CREATE TABLE IF NOT EXISTS transaksi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_obat INT NOT NULL,
+    nama_pembeli VARCHAR(100) NOT NULL,
+    alamat TEXT NOT NULL,
+    no_hp VARCHAR(20) NOT NULL,
+    jumlah INT NOT NULL,
+    total INT NOT NULL,
+    status VARCHAR(50) DEFAULT 'Menunggu Konfirmasi',
+    tanggal TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_obat) REFERENCES obat(id)
+);
+
+-- Insert data obat
+INSERT INTO obat (nama, harga, stok, gambar, keterangan, terjual) VALUES
+('Paracetamol 500mg', 5000, 100, 'paracetamol.jpg', 'Obat pereda demam dan nyeri', 150),
+('Amoxicillin 500mg', 15000, 80, 'amoxicillin.jpg', 'Antibiotik untuk infeksi bakteri', 120),
+('Vitamin C 1000mg', 25000, 150, 'vitaminc.jpg', 'Suplemen vitamin C untuk daya tahan tubuh', 200),
+('OBH Combi', 18000, 60, 'obh.jpg', 'Obat batuk berdahak', 90),
+('Antasida', 8000, 70, 'antasida.jpg', 'Obat maag dan asam lambung', 85),
+('Promag', 12000, 90, 'promag.jpg', 'Obat untuk mengatasi maag', 110),
+('Bodrex', 7000, 120, 'bodrex.jpg', 'Obat sakit kepala', 95),
+('Mixagrip', 9000, 100, 'mixagrip.jpg', 'Obat flu dan demam', 88);

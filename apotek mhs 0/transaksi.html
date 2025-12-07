@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi - Apotek Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="toggle-btn" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Apotek Mahasiswa</h1>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-capsules" style="font-size: 1.5rem;"></i>
+                <span>Kesehatan Mahasiswa</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav>
+            <a href="beranda.html">
+                <i class="fas fa-home"></i>
+                Beranda
+            </a>
+            <a href="daftar-obat.html">
+                <i class="fas fa-pills"></i>
+                Daftar Obat
+            </a>
+            <a href="transaksi.html" class="active">
+                <i class="fas fa-file-invoice"></i>
+                Transaksi
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <div class="card">
+                <h1 style="color: #333; margin-bottom: 2rem;">
+                    <i class="fas fa-file-invoice"></i> Riwayat Transaksi
+                </h1>
+
+                <!-- Transaksi 1 -->
+                <div class="transaksi-item">
+                    <div class="transaksi-header">
+                        <div>
+                            <h3>Paracetamol 500mg</h3>
+                            <p class="transaksi-date">
+                                <i class="fas fa-calendar"></i> 
+                                07/12/2024 14:30
+                            </p>
+                        </div>
+                        <span class="status-badge">
+                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
+                        </span>
+                    </div>
+
+                    <div class="transaksi-details">
+                        <div>
+                            <p><strong>Nama:</strong> Ahmad Fadli</p>
+                            <p><strong>Alamat:</strong> Jl. Sudirman No. 123, Jakarta</p>
+                            <p><strong>No. HP:</strong> 081234567890</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p><strong>Jumlah:</strong> 2 pcs</p>
+                            <div class="transaksi-total">
+                                Rp 10.000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaksi 2 -->
+                <div class="transaksi-item">
+                    <div class="transaksi-header">
+                        <div>
+                            <h3>Vitamin C 1000mg</h3>
+                            <p class="transaksi-date">
+                                <i class="fas fa-calendar"></i> 
+                                06/12/2024 10:15
+                            </p>
+                        </div>
+                        <span class="status-badge">
+                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
+                        </span>
+                    </div>
+
+                    <div class="transaksi-details">
+                        <div>
+                            <p><strong>Nama:</strong> Siti Nurhaliza</p>
+                            <p><strong>Alamat:</strong> Jl. Gatot Subroto No. 45, Bandung</p>
+                            <p><strong>No. HP:</strong> 082345678901</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p><strong>Jumlah:</strong> 3 pcs</p>
+                            <div class="transaksi-total">
+                                Rp 75.000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaksi 3 -->
+                <div class="transaksi-item">
+                    <div class="transaksi-header">
+                        <div>
+                            <h3>Amoxicillin 500mg</h3>
+                            <p class="transaksi-date">
+                                <i class="fas fa-calendar"></i> 
+                                05/12/2024 16:45
+                            </p>
+                        </div>
+                        <span class="status-badge">
+                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
+                        </span>
+                    </div>
+
+                    <div class="transaksi-details">
+                        <div>
+                            <p><strong>Nama:</strong> Budi Santoso</p>
+                            <p><strong>Alamat:</strong> Jl. Ahmad Yani No. 78, Surabaya</p>
+                            <p><strong>No. HP:</strong> 083456789012</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p><strong>Jumlah:</strong> 1 pcs</p>
+                            <div class="transaksi-total">
+                                Rp 15.000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaksi 4 -->
+                <div class="transaksi-item">
+                    <div class="transaksi-header">
+                        <div>
+                            <h3>OBH Combi</h3>
+                            <p class="transaksi-date">
+                                <i class="fas fa-calendar"></i> 
+                                04/12/2024 09:20
+                            </p>
+                        </div>
+                        <span class="status-badge">
+                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
+                        </span>
+                    </div>
+
+                    <div class="transaksi-details">
+                        <div>
+                            <p><strong>Nama:</strong> Dewi Lestari</p>
+                            <p><strong>Alamat:</strong> Jl. Diponegoro No. 234, Yogyakarta</p>
+                            <p><strong>No. HP:</strong> 084567890123</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p><strong>Jumlah:</strong> 2 pcs</p>
+                            <div class="transaksi-total">
+                                Rp 36.000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaksi 5 -->
+                <div class="transaksi-item">
+                    <div class="transaksi-header">
+                        <div>
+                            <h3>Promag</h3>
+                            <p class="transaksi-date">
+                                <i class="fas fa-calendar"></i> 
+                                03/12/2024 13:55
+                            </p>
+                        </div>
+                        <span class="status-badge">
+                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
+                        </span>
+                    </div>
+
+                    <div class="transaksi-details">
+                        <div>
+                            <p><strong>Nama:</strong> Rudi Hermawan</p>
+                            <p><strong>Alamat:</strong> Jl. Merdeka No. 567, Semarang</p>
+                            <p><strong>No. HP:</strong> 085678901234</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p><strong>Jumlah:</strong> 4 pcs</p>
+                            <div class="transaksi-total">
+                                Rp 48.000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            sidebar.classList.toggle('hidden');
+            mainContent.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
