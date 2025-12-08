@@ -5,9 +5,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-.color-hitam {
-    color:var(--hitam)
-}
+
 :root {
     --hitam:#333;
     --biru1: #f0f3fa;
@@ -27,7 +25,7 @@ body {
 /* Header */
 .header {
     background: linear-gradient(135deg, var(--biru5) 0%, var(--biru6) 100%);
-    color: white;
+    color:var(--biru1);
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
@@ -62,7 +60,7 @@ body {
     top: 70px;
     width: 260px;
     height: calc(100vh - 70px);
-    background: white;
+    background:var(--biru1);
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     z-index: 999;
@@ -91,18 +89,18 @@ body {
 
 .sidebar a:hover {
     background:var(--biru1);
-    color: #395886;
+    color: var(--biru6);
 }
 
 .sidebar a.active {
     background: var(--biru5);
-    color: white;
+    color: var(--biru1);
 }
 
 .toggle-btn {
     background: none;
     border: none;
-    color: white;
+    color: var(--biru1);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.5rem;
@@ -111,7 +109,7 @@ body {
 }
 
 .toggle-btn:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(251, 2, 2, 0.1);
 }
 
 /* Main Content */
@@ -132,7 +130,7 @@ body {
 
 /* Cards */
 .card {
-    background: white;
+    background: var(--biru1);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
@@ -140,8 +138,8 @@ body {
 }
 
 .hero-card {
-    background: linear-gradient(135deg, #628ECB 0%, #395886 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--biru5) 0%, var(--biru1) 100%);
+    color: var(--biru1);
     padding: 3rem;
 }
 
@@ -164,7 +162,7 @@ body {
 }
 
 .layanan-item {
-    background: #F0F3FA;
+    background:var(--biru2);
     padding: 2rem;
     border-radius: 12px;
     text-align: center;
@@ -176,7 +174,7 @@ body {
 }
 
 .layanan-item h3 {
-    color: #395886;
+    color: var(--biru6);
     margin: 1rem 0 0.5rem 0;
 }
 
@@ -185,7 +183,7 @@ body {
     font-size: 0.9rem;
 }
 
-/* Obat Grid */
+
 .obat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -194,8 +192,8 @@ body {
 }
 
 .obat-card {
-    background: white;
-    border: 1px solid #e0e0e0;
+    background:var(--biru1);
+    border: 1px solid #e0e3ea;
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -253,7 +251,7 @@ body {
     font-weight: bold;
 }
 
-/* Buttons */
+
 .btn {
     padding: 0.8rem 1.5rem;
     border: none;
@@ -268,12 +266,12 @@ body {
 }
 
 .btn-primary {
-    background: #628ECB;
-    color: white;
+    background:var(--biru5);
+    color: var(--biru1);
 }
 
 .btn-primary:hover {
-    background: #395886;
+    background: var(--biru6);
 }
 
 .btn-block {
@@ -311,7 +309,7 @@ body {
 
 .form-control:focus {
     outline: none;
-    border-color: #628ECB;
+    border-color: var(--biru5);
     box-shadow: 0 0 0 3px rgba(98, 142, 203, 0.1);
 }
 
@@ -328,7 +326,7 @@ textarea.form-control {
 }
 
 .quantity-btn {
-    background: #e0e0e0;
+    background: #e0e3eA;
     border: none;
     width: 40px;
     height: 40px;
@@ -349,7 +347,7 @@ textarea.form-control {
 
 /* Total Box */
 .total-box {
-    background: #F0F3FA;
+    background:var(--biru1);
     padding: 1.5rem;
     border-radius: 8px;
     margin: 1.5rem 0;
@@ -358,7 +356,7 @@ textarea.form-control {
 .total-box .total-label {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
+    color: var(--hitam);
 }
 
 .total-box .total-amount {
@@ -369,8 +367,8 @@ textarea.form-control {
 
 /* Transaksi List */
 .transaksi-item {
-    background: white;
-    border: 1px solid #e0e0e0;
+    background: var(--biru1);
+    border: 1px solid #e0e3ea;
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -387,7 +385,7 @@ textarea.form-control {
     align-items: start;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e3ea;
 }
 
 .transaksi-header h3 {
@@ -400,14 +398,6 @@ textarea.form-control {
     font-size: 0.85rem;
 }
 
-.status-badge {
-    background: #FFE082;
-    color: #F57F17;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
 
 .transaksi-details {
     display: grid;
@@ -422,13 +412,13 @@ textarea.form-control {
 }
 
 .transaksi-details strong {
-    color: #333;
+    color:var(--hitam);
 }
 
 .transaksi-total {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #628ECB;
+    color: var(--biru5);
     margin-top: 0.5rem;
 }
 
@@ -441,7 +431,7 @@ textarea.form-control {
 }
 
 .product-image {
-    border: 1px solid #e0e0e0;
+    border: 1px solid #e0e3ea;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -458,7 +448,7 @@ textarea.form-control {
     border-radius: 8px;
 }
 
-/* Empty State */
+/* Empty State
 .empty-state {
     text-align: center;
     padding: 4rem 2rem;
@@ -472,7 +462,7 @@ textarea.form-control {
 .empty-state p {
     color: #999;
     font-size: 1.1rem;
-}
+} */
 
 /* Alert */
 .alert {

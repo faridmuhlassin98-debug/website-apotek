@@ -10,6 +10,7 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <div class="header">
@@ -63,7 +65,7 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
 
             <!-- Layanan -->
             <div class="card">
-                <h2 style="color: #333; margin-bottom: 1.5rem;">
+                <h2 style="color: var(--hitam); margin-bottom: 1.5rem;">
                     <i class="fas fa-concierge-bell"></i> Layanan Kami
                 </h2>
                 <div class="layanan-grid">
@@ -88,19 +90,23 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                 </a>
             </div>
             <div class="card">
-                <h2 style="color: hitam;"></h2>
+                <h2 style="color: var(--hitam) " margin-bottom: 1,5rem;>
+                    <i class="fa-solid fa-circle-info"></i> Informasi Obat
+                </h2>
+                <div class=""></div>
             </div>
 
             <!-- Obat Terlaris -->
             <div class="card">
-                <h2 style="color: hitam; margin-bottom: 1.5rem;">
+                <h2 style="color: var(--hitam); margin-bottom: 1.5rem;">
                     <i class="fas fa-star"></i> Obat Terlaris
                 </h2>
                 <div class="obat-grid">
                     <!-- Obat 1 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300" alt="Vitamin C">
+                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300"
+                                alt="Vitamin C">
                             <div class="badge">#1</div>
                         </div>
                         <div class="obat-card-content">
@@ -118,7 +124,8 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                     <!-- Obat 2 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=300" alt="Paracetamol">
+                            <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=300"
+                                alt="Paracetamol">
                             <div class="badge">#2</div>
                         </div>
                         <div class="obat-card-content">
@@ -136,7 +143,8 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                     <!-- Obat 3 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="https://images.unsplash.com/photo-1730388843790-f753ecf9ba94?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Amoxicillin">
+                            <img src="https://images.unsplash.com/photo-1730388843790-f753ecf9ba94?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Amoxicillin">
                             <div class="badge">#3</div>
                         </div>
                         <div class="obat-card-content">
@@ -159,10 +167,11 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
-            
+
             sidebar.classList.toggle('hidden');
             mainContent.classList.toggle('expanded');
         }
     </script>
 </body>
+
 </html>
