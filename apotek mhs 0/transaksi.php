@@ -65,163 +65,36 @@ $result = mysqli_query($conn, $query);
                 </h1>
 
 
-                <!-- Transaksi 1 -->
+                <?php if(mysqli_num_rows($result) > 0): ?>
+                <?php while($transaksi = mysqli_fetch_assoc($result)): ?>
                 <div class="transaksi-item">
                     <div class="transaksi-header">
-                        <div>
-                            <h3>Paracetamol 500mg</h3>
-                            <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i>
-                                07/12/2024 14:30
-                            </p>
-                        </div>
-                        <span class="status-badge">
-                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
-                        </span>
+                        <h3><?= htmlspecialchars($transaksi['nama_obat']) ?></h3>
+                        <p class="transaksi-date">
+                            <i class="fas fa-calendar"></i>
+                            <?= date('d/m/Y H:i', strtotime($transaksi['tanggal'])) ?>
+                        </p>
                     </div>
-
-
                     <div class="transaksi-details">
                         <div>
-                            <p><strong>Nama:</strong> Ahmad Fadli</p>
-                            <p><strong>Alamat:</strong> Jl. Sudirman No. 123, Jakarta</p>
-                            <p><strong>No. HP:</strong> 081234567890</p>
+                            <p><strong>Nama:</strong> <?= htmlspecialchars($transaksi['nama_pembeli']) ?></p>
+                            <p><strong>Alamat:</strong> <?= htmlspecialchars($transaksi['alamat']) ?></p>
+                            <p><strong>No. HP:</strong> <?= htmlspecialchars($transaksi['no_hp']) ?></p>
                         </div>
                         <div style="text-align: right;">
-                            <p><strong>Jumlah:</strong> 2 pcs</p>
+                            <p><strong>Jumlah:</strong> <?= $transaksi['jumlah'] ?> pcs</p>
                             <div class="transaksi-total">
-                                Rp 10.000
+                                Rp <?= number_format($transaksi['total'], 0, ',', '.') ?>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php endwhile; ?>
+                <?php else: ?>
+                <p>Tidak ada transaksi.</p>
+                <?php endif; 
+                ?>
 
-
-                <!-- Transaksi 2 -->
-                <div class="transaksi-item">
-                    <div class="transaksi-header">
-                        <div>
-                            <h3>Vitamin C 1000mg</h3>
-                            <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i>
-                                06/12/2024 10:15
-                            </p>
-                        </div>
-                        <span class="status-badge">
-                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
-                        </span>
-                    </div>
-
-
-                    <div class="transaksi-details">
-                        <div>
-                            <p><strong>Nama:</strong> Siti Nurhaliza</p>
-                            <p><strong>Alamat:</strong> Jl. Gatot Subroto No. 45, Bandung</p>
-                            <p><strong>No. HP:</strong> 082345678901</p>
-                        </div>
-                        <div style="text-align: right;">
-                            <p><strong>Jumlah:</strong> 3 pcs</p>
-                            <div class="transaksi-total">
-                                Rp 75.000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Transaksi 3 -->
-                <div class="transaksi-item">
-                    <div class="transaksi-header">
-                        <div>
-                            <h3>Amoxicillin 500mg</h3>
-                            <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i>
-                                05/12/2024 16:45
-                            </p>
-                        </div>
-                        <span class="status-badge">
-                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
-                        </span>
-                    </div>
-
-
-                    <div class="transaksi-details">
-                        <div>
-                            <p><strong>Nama:</strong> Budi Santoso</p>
-                            <p><strong>Alamat:</strong> Jl. Ahmad Yani No. 78, Surabaya</p>
-                            <p><strong>No. HP:</strong> 083456789012</p>
-                        </div>
-                        <div style="text-align: right;">
-                            <p><strong>Jumlah:</strong> 1 pcs</p>
-                            <div class="transaksi-total">
-                                Rp 15.000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Transaksi 4 -->
-                <div class="transaksi-item">
-                    <div class="transaksi-header">
-                        <div>
-                            <h3>OBH Combi</h3>
-                            <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i>
-                                04/12/2024 09:20
-                            </p>
-                        </div>
-                        <span class="status-badge">
-                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
-                        </span>
-                    </div>
-
-
-                    <div class="transaksi-details">
-                        <div>
-                            <p><strong>Nama:</strong> Dewi Lestari</p>
-                            <p><strong>Alamat:</strong> Jl. Diponegoro No. 234, Yogyakarta</p>
-                            <p><strong>No. HP:</strong> 084567890123</p>
-                        </div>
-                        <div style="text-align: right;">
-                            <p><strong>Jumlah:</strong> 2 pcs</p>
-                            <div class="transaksi-total">
-                                Rp 36.000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Transaksi 5 -->
-                <div class="transaksi-item">
-                    <div class="transaksi-header">
-                        <div>
-                            <h3>Promag</h3>
-                            <p class="transaksi-date">
-                                <i class="fas fa-calendar"></i>
-                                03/12/2024 13:55
-                            </p>
-                        </div>
-                        <span class="status-badge">
-                            <i class="fas fa-clock"></i> Menunggu Konfirmasi
-                        </span>
-                    </div>
-
-
-                    <div class="transaksi-details">
-                        <div>
-                            <p><strong>Nama:</strong> Rudi Hermawan</p>
-                            <p><strong>Alamat:</strong> Jl. Merdeka No. 567, Semarang</p>
-                            <p><strong>No. HP:</strong> 085678901234</p>
-                        </div>
-                        <div style="text-align: right;">
-                            <p><strong>Jumlah:</strong> 4 pcs</p>
-                            <div class="transaksi-total">
-                                Rp 48.000
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
