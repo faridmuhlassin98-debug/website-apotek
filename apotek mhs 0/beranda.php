@@ -105,14 +105,14 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                     <!-- Obat 1 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300"
-                                alt="Vitamin C">
+                            <img src="paracetamol.jpg"
+                                alt="Paracetamol">
                             <div class="badge">#1</div>
                         </div>
                         <div class="obat-card-content">
-                            <h3>Vitamin C 1000mg</h3>
-                            <p>Suplemen vitamin C untuk daya tahan tubuh</p>
-                            <div class="obat-price">Rp 25.000</div>
+                            <h3>Paracetamol 500mg</h3>
+                            <p>Meredakan demam dan nyeri ringan-sedang</p>
+                            <div class="obat-price">Rp 7.000</div>
                             <div class="obat-stock">Terjual: 200 pcs</div>
                             <a href="beli_obat.php?id=1" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
@@ -124,14 +124,14 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                     <!-- Obat 2 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=300"
-                                alt="Paracetamol">
+                            <img src="amoxicillin.jpg"
+                                alt="Amoxicillin">
                             <div class="badge">#2</div>
                         </div>
                         <div class="obat-card-content">
-                            <h3>Paracetamol 500mg</h3>
-                            <p>Obat pereda demam dan nyeri</p>
-                            <div class="obat-price">Rp 5.000</div>
+                            <h3>Amoxicillin 500mg</h3>
+                            <p>Antibiotik untuk infeksi bakteri</p>
+                            <div class="obat-price">Rp 10.000</div>
                             <div class="obat-stock">Terjual: 150 pcs</div>
                             <a href="beli_obat.php?id=2" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
@@ -143,14 +143,14 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                     <!-- Obat 3 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="https://images.unsplash.com/photo-1730388843790-f753ecf9ba94?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Amoxicillin">
+                            <img src="bioplacenton.jpg"
+                                alt="Bioplacenton">
                             <div class="badge">#3</div>
                         </div>
                         <div class="obat-card-content">
-                            <h3>Amoxicillin 500mg</h3>
-                            <p>Antibiotik untuk infeksi bakteri</p>
-                            <div class="obat-price">Rp 15.000</div>
+                            <h3>Bioplacenton</h3>
+                            <p>Obat untuk luka ringan, luka bakar, dan infeksi kulit</p>
+                            <div class="obat-price">Rp 30.000</div>
                             <div class="obat-stock">Terjual: 120 pcs</div>
                             <a href="beli_obat.php?id=3" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>

@@ -116,7 +116,7 @@ if (isset($_POST['beli'])) {
                 <div class="detail-grid">
                     <!-- Detail Obat -->
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" alt="<?= htmlspecialchars($obat['nama'] ?? 'Obat') ?>">
+                        <img src="paracetamol.jpg" alt="<?= htmlspecialchars($obat['nama'] ?? 'Obat') ?>">
                         <div class="product-info">
                             <h2><?= htmlspecialchars($obat['nama'] ?? 'Paracetamol 500mg') ?></h2>
                             <p><?= htmlspecialchars($obat['deskripsi'] ?? 'Obat berkualitas') ?></p>

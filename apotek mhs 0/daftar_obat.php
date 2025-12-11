@@ -63,12 +63,12 @@ $result = mysqli_query($conn, $query);
                 <div class="obat-grid">
                     <!-- Obat 1 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=300" alt="Paracetamol">
+                        <img src="paracetamol.jpg" alt="Paracetamol">
                         <div class="obat-card-content">
                             <h3>Paracetamol 500mg</h3>
-                            <p>Obat pereda demam dan nyeri</p>
+                            <p>Meredakan demam dan nyeri ringan-sedang</p>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
-                                <div class="obat-price">Rp 5.000</div>
+                                <div class="obat-price">Rp 7.000</div>
                                 <div class="obat-stock">Stok: 100</div>
                             </div>
                             <a href="beli_obat.php?id=1" class="btn btn-primary btn-block btn-icon">
@@ -80,12 +80,12 @@ $result = mysqli_query($conn, $query);
 
                     <!-- Obat 2 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1730388843790-f753ecf9ba94?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Amoxicillin">
+                        <img src="amoxicillin.jpg" alt="Amoxicillin">
                         <div class="obat-card-content">
                             <h3>Amoxicillin 500mg</h3>
                             <p>Antibiotik untuk infeksi bakteri</p>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
-                                <div class="obat-price">Rp 15.000</div>
+                                <div class="obat-price">Rp 10.000</div>
                                 <div class="obat-stock">Stok: 80</div>
                             </div>
                             <a href="beli_obat.php?id=2" class="btn btn-primary btn-block btn-icon">
@@ -97,12 +97,12 @@ $result = mysqli_query($conn, $query);
 
                     <!-- Obat 3 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300" alt="Vitamin C">
+                        <img src="bioplacenton.jpg" alt="Bioplacenton">
                         <div class="obat-card-content">
-                            <h3>Vitamin C 1000mg</h3>
-                            <p>Suplemen vitamin C untuk daya tahan tubuh</p>
+                            <h3>Bioplacenton</h3>
+                            <p>Obat untuk luka ringan, luka bakar, dan infeksi kulit</p>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
-                                <div class="obat-price">Rp 25.000</div>
+                                <div class="obat-price">Rp 30.000</div>
                                 <div class="obat-stock">Stok: 150</div>
                             </div>
                             <a href="beli_obat.php?id=3" class="btn btn-primary btn-block btn-icon">
@@ -114,12 +114,12 @@ $result = mysqli_query($conn, $query);
 
                     <!-- Obat 4 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=300" alt="OBH Combi">
+                        <img src="dexamethasone" alt="Dexamethasone">
                         <div class="obat-card-content">
-                            <h3>OBH Combi</h3>
-                            <p>Obat batuk berdahak</p>
+                            <h3>Dexamethasone</h3>
+                            <p>Obat radang dan alergi berat</p>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
-                                <div class="obat-price">Rp 18.000</div>
+                                <div class="obat-price">Rp 5.000</div>
                                 <div class="obat-stock">Stok: 60</div>
                             </div>
                             <a href="beli_obat.php?id=4" class="btn btn-primary btn-block btn-icon">
@@ -131,10 +131,10 @@ $result = mysqli_query($conn, $query);
 
                     <!-- Obat 5 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=300" alt="Antasida">
+                        <img src="antimo" alt="Antimo">
                         <div class="obat-card-content">
-                            <h3>Antasida</h3>
-                            <p>Obat maag dan asam lambung</p>
+                            <h3>Antimo Dimenhydrinate</h3>
+                            <p>Obat untuk mabuk perjalanan dan mual</p>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
                                 <div class="obat-price">Rp 8.000</div>
                                 <div class="obat-stock">Stok: 70</div>
@@ -148,49 +148,15 @@ $result = mysqli_query($conn, $query);
 
                     <!-- Obat 6 -->
                     <div class="obat-card">
-                        <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?w=300" alt="Promag">
+                        <img src="Promagh.jpg" alt="Promagh">
                         <div class="obat-card-content">
-                            <h3>Promag</h3>
+                            <h3>Promagh</h3>
                             <p>Obat untuk mengatasi maag</p>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
                                 <div class="obat-price">Rp 12.000</div>
                                 <div class="obat-stock">Stok: 90</div>
                             </div>
                             <a href="beli_obat.php?id=6" class="btn btn-primary btn-block btn-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                                Beli Sekarang
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Obat 7 -->
-                    <div class="obat-card">
-                        <img src="https://plus.unsplash.com/premium_photo-1671721439617-491242a0507f?q=80&w=394&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bodrex">
-                        <div class="obat-card-content">
-                            <h3>Bodrex</h3>
-                            <p>Obat sakit kepala</p>
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
-                                <div class="obat-price">Rp 7.000</div>
-                                <div class="obat-stock">Stok: 120</div>
-                            </div>
-                            <a href="beli_obat.php?id=7" class="btn btn-primary btn-block btn-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                                Beli Sekarang
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Obat 8 -->
-                    <div class="obat-card">
-                        <img src="https://plus.unsplash.com/premium_photo-1668487826871-2f2cac23ad56?q=80&w=812&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mixagrip">
-                        <div class="obat-card-content">
-                            <h3>Mixagrip</h3>
-                            <p>Obat flu dan demam</p>
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
-                                <div class="obat-price">Rp 9.000</div>
-                                <div class="obat-stock">Stok: 100</div>
-                            </div>
-                            <a href="beli_obat.php?id=8" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli Sekarang
                             </a>
