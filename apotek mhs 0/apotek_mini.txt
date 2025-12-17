@@ -43,18 +43,14 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id`, `nama`, `harga`, `stok`, `gambar`, `keterangan`, `terjual`, `created_at`) VALUES
-(1, 'Paracetamol 500mg', 5000, 100, 'paracetamol.jpg', 'Obat pereda demam dan nyeri', 150, '2025-12-07 09:17:53'),
-(2, 'Amoxicillin 500mg', 15000, 80, 'amoxicillin.jpg', 'Antibiotik untuk infeksi bakteri', 120, '2025-12-07 09:17:53'),
-(3, 'Vitamin C 1000mg', 25000, 150, 'vitaminc.jpg', 'Suplemen vitamin C untuk daya tahan tubuh', 200, '2025-12-07 09:17:53'),
-(4, 'OBH Combi', 18000, 60, 'obh.jpg', 'Obat batuk berdahak', 90, '2025-12-07 09:17:53'),
-(5, 'Antasida', 8000, 70, 'antasida.jpg', 'Obat maag dan asam lambung', 85, '2025-12-07 09:17:53'),
-(6, 'Promag', 12000, 90, 'promag.jpg', 'Obat untuk mengatasi maag', 110, '2025-12-07 09:17:53'),
-(7, 'Bodrex', 7000, 120, 'bodrex.jpg', 'Obat sakit kepala', 95, '2025-12-07 09:17:53'),
-(8, 'Mixagrip', 9000, 100, 'mixagrip.jpg', 'Obat flu dan demam', 88, '2025-12-07 09:17:53');
+(1, 'PARACETAMOL(500mg)', 7000, 100, 'paracetamol.jpg', 'Obat pereda demam dan nyeri', 150, '2025-12-07 09:17:53'),
+(2, 'AMOXICILLIN(500mg)', 10000, 80, 'amoxicillin.jpg', 'Antibiotik untuk infeksi bakteri', 120, '2025-12-07 09:17:53'),
+(3, 'BIOPLACENTON(15g)', 30000, 150, 'bioplacenton.jpg', 'Suplemen vitamin C untuk daya tahan tubuh', 200, '2025-12-07 09:17:53'),
+(4, 'DEXAMETHASONE(0,5mg)',5000, 60, 'dexamethasone.jpg', 'Obat batuk berdahak', 90, '2025-12-07 09:17:53'),
+(5, 'ANTIMO DIMENHYDRINATE', 5000, 70, 'antimo.jpg', 'Obat maag dan asam lambung', 85, '2025-12-07 09:17:53'),
+(6, 'Promag', 12000, 90, 'promagh.jpg', 'Obat untuk mengatasi maag', 110, '2025-12-07 09:17:53'),
 
 -- --------------------------------------------------------
-
---
 -- Table structure for table `transaksi`
 --
 
@@ -117,3 +113,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

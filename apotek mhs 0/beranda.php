@@ -27,7 +27,7 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                 <button class="toggle-btn" onclick="toggleSidebar()">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1>Apotek Mahasiswa</h1>
+                <h1>MEDIFO</h1>
             </div>
             <div class="header-right">
                 <i class="fas fa-capsules" style="font-size: 1.5rem;"></i>
@@ -54,16 +54,13 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
         </nav>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content" id="mainContent">
         <div class="container">
-            <!-- Hero Section -->
             <div class="card hero-card">
                 <h1>Selamat Datang di Apotek Mahasiswa</h1>
                 <p>Solusi kesehatan terpercaya untuk mahasiswa</p>
             </div>
 
-            <!-- Layanan -->
             <div class="card">
                 <h2 style="color: var(--hitam); margin-bottom: 1.5rem;">
                     <i class="fas fa-concierge-bell"></i> Layanan Kami
@@ -96,72 +93,40 @@ $result_terlaris = mysqli_query($conn, $query_terlaris);
                 <div class=""></div>
             </div>
 
-            <!-- Obat Terlaris -->
             <div class="card">
                 <h2 style="color: var(--hitam); margin-bottom: 1.5rem;">
                     <i class="fas fa-star"></i> Obat Terlaris
                 </h2>
                 <div class="obat-grid">
-                    <!-- Obat 1 -->
-                    <div class="obat-card">
-                        <div style="position: relative;">
-                            <img src="paracetamol.jpg"
-                                alt="Paracetamol">
-                            <div class="badge">#1</div>
+                    <?php
+                    $rank = 1;
+                    while ($obat = mysqli_fetch_assoc($result_terlaris)):
+                        ?>
+                        <div class="obat-card">
+                            <div style="position: relative;">
+                                <img src="img/<?php echo $obat['gambar']; ?>" alt="<?php echo $obat['nama']; ?>"
+                                    onerror="this.src='https://via.placeholder.com/300x200?text=Obat'">
+                                <div class="badge">#<?php echo $rank++; ?></div>
+                            </div>
+                            <div class="obat-card-content">
+                                <h3><?php echo $obat['nama']; ?></h3>
+                                <p><?php echo $obat['keterangan']; ?></p>
+                                <div class="obat-price">Rp <?php echo number_format($obat['harga'], 0, ',', '.'); ?>
+                                </div>
+                                <div class="obat-stock">Terjual: <?php echo $obat['terjual']; ?> pcs</div>
+                                <a href="beli_obat.php?id=<?php echo $obat['id']; ?>"
+                                    class="btn btn-primary btn-block btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Beli
+                                </a>
+                            </div>
                         </div>
-                        <div class="obat-card-content">
-                            <h3>Paracetamol 500mg</h3>
-                            <p>Meredakan demam dan nyeri ringan-sedang</p>
-                            <div class="obat-price">Rp 7.000</div>
-                            <div class="obat-stock">Terjual: 200 pcs</div>
-                            <a href="beli_obat.php?id=1" class="btn btn-primary btn-block btn-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                                Beli
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Obat 2 -->
-                    <div class="obat-card">
-                        <div style="position: relative;">
-                            <img src="amoxicillin.jpg"
-                                alt="Amoxicillin">
-                            <div class="badge">#2</div>
-                        </div>
-                        <div class="obat-card-content">
-                            <h3>Amoxicillin 500mg</h3>
-                            <p>Antibiotik untuk infeksi bakteri</p>
-                            <div class="obat-price">Rp 10.000</div>
-                            <div class="obat-stock">Terjual: 150 pcs</div>
-                            <a href="beli_obat.php?id=2" class="btn btn-primary btn-block btn-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                                Beli
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Obat 3 -->
-                    <div class="obat-card">
-                        <div style="position: relative;">
-                            <img src="bioplacenton.jpg"
-                                alt="Bioplacenton">
-                            <div class="badge">#3</div>
-                        </div>
-                        <div class="obat-card-content">
-                            <h3>Bioplacenton</h3>
-                            <p>Obat untuk luka ringan, luka bakar, dan infeksi kulit</p>
-                            <div class="obat-price">Rp 30.000</div>
-                            <div class="obat-stock">Terjual: 120 pcs</div>
-                            <a href="beli_obat.php?id=3" class="btn btn-primary btn-block btn-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                                Beli
-                            </a>
-                        </div>
-                    </div>
+                    <?php endwhile; ?>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         function toggleSidebar() {
