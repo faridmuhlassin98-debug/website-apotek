@@ -96,7 +96,39 @@ $result = mysqli_query($conn, $query);
                     <p>Tidak ada transaksi.</p>
                 <?php endif;
                 ?>
+            </div>
+            <div class="card" style="margin-top: 2rem;">
+                <h1 style="color: #333; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-bar"></i> Laporan Penjualan
+                </h1>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: var(--biru5); color: white;">
+                            <th style="padding: 1rem; text-align: left;">Nama Obat</th>
+                            <th style="padding: 1rem; text-align: center;">Total Jumlah (pcs)</th>
+                            <th style="padding: 1rem; text-align: right;">Total Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $laporan_query = "SELECT o.nama, SUM(t.jumlah) AS total_jumlah, SUM(t.total) AS total_harga 
+                                        FROM transaksi t 
+                                        JOIN obat o ON t.id_obat = o.id 
+                                        GROUP BY t.id_obat 
+                                        ORDER BY o.nama";
+                        $laporan_result = mysqli_query($conn, $laporan_query);
 
+                        while ($laporan = mysqli_fetch_assoc($laporan_result)): ?>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 1rem;"><?= htmlspecialchars($laporan['nama']) ?></td>
+                                <td style="padding: 1rem; text-align: center;"><?= $laporan['total_jumlah'] ?></td>
+                                <td style="padding: 1rem; text-align: right;">Rp
+                                    <?= number_format($laporan['total_harga'], 0, ',', '.') ?>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

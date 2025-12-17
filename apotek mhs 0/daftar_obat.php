@@ -20,7 +20,6 @@ $result = mysqli_query($conn, $query);
 </head>
 
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-content">
             <div style="display: flex; align-items: center; gap: 1rem;">

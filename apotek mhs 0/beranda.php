@@ -21,7 +21,6 @@ $sql = "SELECT * FROM golongan_obat ORDER BY id";
 </head>
 
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-content">
             <div style="display: flex; align-items: center; gap: 1rem;">
@@ -37,7 +36,6 @@ $sql = "SELECT * FROM golongan_obat ORDER BY id";
         </div>
     </div>
 
-    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <nav>
             <a href="beranda.php" class="active">
