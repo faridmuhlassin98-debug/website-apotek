@@ -12,6 +12,7 @@ $result = mysqli_query($conn, $query);
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <div class="header">
@@ -27,7 +29,7 @@ $result = mysqli_query($conn, $query);
                 <button class="toggle-btn" onclick="toggleSidebar()">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1>Apotek Mahasiswa</h1>
+                <h1>MEDIFO</h1>
             </div>
             <div class="header-right">
                 <i class="fas fa-capsules" style="font-size: 1.5rem;"></i>
@@ -65,40 +67,40 @@ $result = mysqli_query($conn, $query);
                 </h1>
 
 
-                <?php if(mysqli_num_rows($result) > 0): ?>
-                <?php while($transaksi = mysqli_fetch_assoc($result)): ?>
-                <div class="transaksi-item">
-                    <div class="transaksi-header">
-                        <h3><?= htmlspecialchars($transaksi['nama_obat']) ?></h3>
-                        <p class="transaksi-date">
-                            <i class="fas fa-calendar"></i>
-                            <?= date('d/m/Y H:i', strtotime($transaksi['tanggal'])) ?>
-                        </p>
-                    </div>
-                    <div class="transaksi-details">
-                        <div>
-                            <p><strong>Nama:</strong> <?= htmlspecialchars($transaksi['nama_pembeli']) ?></p>
-                            <p><strong>Alamat:</strong> <?= htmlspecialchars($transaksi['alamat']) ?></p>
-                            <p><strong>No. HP:</strong> <?= htmlspecialchars($transaksi['no_hp']) ?></p>
-                        </div>
-                        <div style="text-align: right;">
-                            <p><strong>Jumlah:</strong> <?= $transaksi['jumlah'] ?> pcs</p>
-                            <div class="transaksi-total">
-                                Rp <?= number_format($transaksi['total'], 0, ',', '.') ?>
+                <?php if (mysqli_num_rows($result) > 0): ?>
+                    <?php while ($transaksi = mysqli_fetch_assoc($result)): ?>
+                        <div class="transaksi-item">
+                            <div class="transaksi-header">
+                                <h3><?= htmlspecialchars($transaksi['nama_obat']) ?></h3>
+                                <p class="transaksi-date">
+                                    <i class="fas fa-calendar"></i>
+                                    <?= date('d/m/Y H:i', strtotime($transaksi['tanggal'])) ?>
+                                </p>
+                            </div>
+                            <div class="transaksi-details">
+                                <div>
+                                    <p><strong>Nama:</strong> <?= htmlspecialchars($transaksi['nama_pembeli']) ?></p>
+                                    <p><strong>Alamat:</strong> <?= htmlspecialchars($transaksi['alamat']) ?></p>
+                                    <p><strong>No. HP:</strong> <?= htmlspecialchars($transaksi['no_hp']) ?></p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p><strong>Jumlah:</strong> <?= $transaksi['jumlah'] ?> pcs</p>
+                                    <div class="transaksi-total">
+                                        Rp <?= number_format($transaksi['total'], 0, ',', '.') ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
                 <?php else: ?>
-                <p>Tidak ada transaksi.</p>
-                <?php endif; 
+                    <p>Tidak ada transaksi.</p>
+                <?php endif;
                 ?>
             </div>
             <div class="card" style="margin-top: 2rem;">
-                <h1 style="color: #333; margin-bottom: 1.5rem;">
+                <h2 style="color: #333; margin-bottom: 1.5rem;">
                     <i class="fas fa-chart-bar"></i> Laporan Penjualan
-                </h1>
+                </h2>
                 <table style="width: 100%; border-collapse: collapse;">
                     <thead>
                         <tr style="background-color: var(--biru5); color: white;">
@@ -116,7 +118,6 @@ $result = mysqli_query($conn, $query);
                                         ORDER BY o.nama";
                         $laporan_result = mysqli_query($conn, $laporan_query);
 
-<<<<<<< HEAD
                         while ($laporan = mysqli_fetch_assoc($laporan_result)): ?>
                             <tr style="border-bottom: 1px solid #ddd;">
                                 <td style="padding: 1rem;"><?= htmlspecialchars($laporan['nama']) ?></td>
@@ -128,11 +129,9 @@ $result = mysqli_query($conn, $query);
                         <?php endwhile; ?>
                     </tbody>
                 </table>
-=======
-                </div>
->>>>>>> 9152c0ede123963fea8f76c0a782209ad9b9a34e
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -140,10 +139,11 @@ $result = mysqli_query($conn, $query);
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
-           
+
             sidebar.classList.toggle('hidden');
             mainContent.classList.toggle('expanded');
         }
     </script>
 </body>
+
 </html>

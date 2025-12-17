@@ -1,91 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3307
--- Generation Time: Dec 17, 2025 at 11:45 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `apotek_mini`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `informasi_obat`
---
-
-CREATE TABLE `informasi_obat` (
-  `id` int(11) NOT NULL,
-  `nama_golongan` varchar(100) NOT NULL,
-  `deskripsi` text DEFAULT NULL,
-  `gambar` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `informasi_obat`
---
-
-INSERT INTO `informasi_obat` (`id`, `nama_golongan`, `deskripsi`, `gambar`) VALUES
-(1, 'Obat Bebas (OTC)', NULL, 'obat_bebas.png'),
-(2, 'Obat Bebas Terbatas', NULL, 'obat_bebas_terbatas.png'),
-(3, 'Obat Keras', NULL, 'obat_keras.png'),
-(4, 'Obat Narkotika', NULL, 'obat_narkotika.png'),
-(5, 'Obat Fitofarmaka', NULL, 'obat_fitofarmaka.png'),
-(6, 'Obat Herbal Terstandar', NULL, 'obat_herbal.png'),
-(7, 'Jamu', NULL, 'obat_jamu.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `obat`
---
+CREATE DATABASE IF NOT EXISTS apotek_mini;
+USE apotek_mini;
 
 CREATE TABLE `obat` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(100) NOT NULL,
   `harga` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
   `gambar` varchar(255) DEFAULT NULL,
   `keterangan` text DEFAULT NULL,
   `terjual` int(11) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `obat`
---
-
 INSERT INTO `obat` (`id`, `nama`, `harga`, `stok`, `gambar`, `keterangan`, `terjual`, `created_at`) VALUES
-(1, 'Paracetamol 500mg', 5000, 97, 'paracetamol.jpg', 'Obat pereda demam dan nyeri', 153, '2025-12-07 09:17:53'),
-(2, 'Amoxicillin 500mg', 15000, 80, 'amoxicillin.jpg', 'Antibiotik untuk infeksi bakteri', 120, '2025-12-07 09:17:53'),
-(3, 'Vitamin C 1000mg', 25000, 150, 'vitaminc.jpg', 'Suplemen vitamin C untuk daya tahan tubuh', 200, '2025-12-07 09:17:53'),
-(4, 'OBH Combi', 18000, 60, 'obh.jpg', 'Obat batuk berdahak', 90, '2025-12-07 09:17:53'),
-(5, 'Antasida', 8000, 64, 'antasida.jpg', 'Obat maag dan asam lambung', 91, '2025-12-07 09:17:53'),
-(6, 'Promag', 12000, 90, 'promag.jpg', 'Obat untuk mengatasi maag', 110, '2025-12-07 09:17:53'),
-(7, 'Bodrex', 7000, 120, 'bodrex.jpg', 'Obat sakit kepala', 95, '2025-12-07 09:17:53'),
-(8, 'Mixagrip', 9000, 100, 'mixagrip.jpg', 'Obat flu dan demam', 88, '2025-12-07 09:17:53');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi`
---
+(1, 'PARACETAMOL(500mg)', 7000, 100, 'paracetamol.jpg', 'Obat pereda demam dan nyeri', 150, '2025-12-07 09:17:53'),
+(2, 'AMOXICILLIN(500mg)', 10000, 80, 'amoxicillin.jpg', 'Antibiotik untuk infeksi bakteri', 120, '2025-12-07 09:17:53'),
+(3, 'BIOPLACENTON(15g)', 30000, 150, 'bioplacenton.jpg', 'Suplemen vitamin C untuk daya tahan tubuh', 200, '2025-12-07 09:17:53'),
+(4, 'DEXAMETHASONE(0,5mg)', 5000, 60, 'dexamethasone.jpg', 'Obat anti inflamasi dan alergi', 90, '2025-12-07 09:17:53'),
+(5, 'ANTIMO DIMENHYDRINATE', 5000, 70, 'antimo.jpg', 'Obat mabuk perjalanan', 85, '2025-12-07 09:17:53'),
+(6, 'Promag', 12000, 90, 'promag.jpg', 'Obat untuk mengatasi maag', 110, '2025-12-07 09:17:53');
 
 CREATE TABLE `transaksi` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_obat` int(11) NOT NULL,
   `nama_pembeli` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
@@ -93,74 +30,33 @@ CREATE TABLE `transaksi` (
   `jumlah` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `status` varchar(50) DEFAULT 'Menunggu Konfirmasi',
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `id_obat` (`id_obat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `transaksi`
---
-
-INSERT INTO `transaksi` (`id`, `id_obat`, `nama_pembeli`, `alamat`, `no_hp`, `jumlah`, `total`, `status`, `tanggal`) VALUES
-(1, 5, 'Khansa', 'Kab. Semarang', '081234567890', 3, 24000, 'Menunggu Konfirmasi', '2025-12-16 12:13:08'),
-(2, 5, 'Khansa', 'Kab. Semarang', '081234567890', 3, 24000, 'Menunggu Konfirmasi', '2025-12-16 12:13:28'),
-(3, 1, 'Khansa', 'Kab. Semarang', '081234567890', 3, 15000, 'Menunggu Konfirmasi', '2025-12-16 12:13:57');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `informasi_obat`
---
-ALTER TABLE `informasi_obat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `obat`
---
-ALTER TABLE `obat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_obat` (`id_obat`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `informasi_obat`
---
-ALTER TABLE `informasi_obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `obat`
---
-ALTER TABLE `obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `transaksi`
---
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id`);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE IF NOT EXISTS `golongan_obat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `simbol_warna` varchar(50) DEFAULT NULL,
+  `keterangan_singkat` varchar(200) DEFAULT NULL,
+  `contoh_obat` text DEFAULT NULL,
+  `tempat_penjualan` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO `golongan_obat` (`id`, `nama`, `gambar`, `deskripsi`, `simbol_warna`, `keterangan_singkat`, `contoh_obat`, `tempat_penjualan`, `created_at`) VALUES
+(1, 'Obat Bebas', 'obat_bebas.png', 'Obat bebas atau over the counter (OTC) ditandai dengan logo bulat atau lingkaran hijau dengan garis tepi berwarna hitam. Obat ini dijual secara bebas dan dapat dibeli di warung, toko obat, serta apotek tanpa resep dokter. Meski bisa dibeli secara bebas, Anda perlu mengonsumsi obat bebas sesuai aturan yang tertera pada kemasan. Jika dikonsumsi secara berlebih, ada risiko gangguan kesehatan yang mengintai. Misalnya, konsumsi paracetamol dalam jangka panjang atau dosisnya berlebih dapat menyebabkan kerusakan hati.', 'Hijau', 'Dapat dibeli tanpa resep dokter', 'Paracetamol, Ibuprofen, Antasida', 'Warung, Toko Obat, Apotek', '2025-12-17 00:00:00'),
+(2, 'Obat Bebas Terbatas', 'obat_bebas_terbatas.png', 'Obat bebas terbatas termasuk dalam golongan obat yang dapat diperoleh tanpa resep dokter dan dapat dibeli di warung, toko obat, serta apotek. Namun, ada peringatan terkait takaran dan aturan khusus dalam penggunaannya, seperti obat kumur maupun obat oles khusus bagian luar tubuh. Tanda dari obat bebas terbatas adalah adanya logo bulat atau lingkaran biru bergaris tepi hitam.', 'Biru', 'Memiliki peringatan khusus penggunaan', 'Chlorpheniramine, Mebendazole, Dekstrometorfan, Cetirizine, Terbinafine', 'Warung, Toko Obat, Apotek', '2025-12-17 00:00:00'),
+(3, 'Obat Keras', 'obat_keras.png', 'Obat keras ditandai dengan logo lingkaran berwarna merah dengan garis tepi berwarna hitam dan huruf K di tengah yang menyentuh garis tepi. Obat keras tidak bisa dibeli secara sembarangan karena memerlukan resep dokter. Obat golongan ini memang sering dijual di apotek atau toko obat online, tetapi pembelian dan penggunaannya harus sesuai anjuran dokter untuk mencegah efek samping dan penyalahgunaan obat.', 'Merah', 'Hanya dengan resep dokter', 'Antibiotik, Obat Jantung, Obat Hipertensi', 'Apotek (dengan resep)', '2025-12-17 00:00:00'),
+(4, 'Obat Golongan Narkotika', 'obat_narkotika.png', 'Simbol dari obat golongan narkotika berupa lingkaran merah dengan logo seperti tanda plus di dalamnya. Obat golongan narkotika tidak boleh dikonsumsi sembarangan karena bisa menyebabkan penyalahgunaan maupun ketergantungan obat. Oleh karena itu, obat ini hanya bisa diperoleh dengan resep dokter dan dikonsumsi di bawah pengawasannya. Obat ini terbuat dari tanaman, bahan sintetis, atau semisintetis yang dapat menurunkan kesadaran atau menghilangkan rasa nyeri.', 'Merah dengan plus', 'Ketat, hanya dengan resep khusus', 'Codeine, Morfin, Tramadol, Diazepam, Phenobarbital', 'Apotek (dengan resep khusus)', '2025-12-17 00:00:00'),
+(5, 'Obat Fitofarmaka', 'obat_fitofarmaka.png', 'Golongan obat fitofarmaka ditandai dengan logo kristal salju berwarna hijau di dalam lingkaran kuning dengan garis tepi berwarna hijau. Fitofarmaka merupakan obat herbal atau obat tradisional dari bahan alami yang sudah teruji secara klinis dan produknya telah memenuhi standar yang ditetapkan.', 'Kuning dengan hijau', 'Herbal teruji klinis', 'Ekstrak meniran hijau, Kayu manis dan bunga bungur', 'Apotek, Toko Kesehatan', '2025-12-17 00:00:00'),
+(6, 'Obat Herbal Terstandar', 'obat_herbal.png', 'Obat herbal terstandar (OHT) ditandai dengan simbol lingkaran kuning bergaris tepi hijau dengan tiga bintang hijau di dalamnya. Golongan obat ini terbuat dari ekstrak atau penyaringan bahan alami, seperti tanaman obat, bagian tubuh hewan, maupun mineral yang sudah teruji secara ilmiah atau penelitian praklinis.', 'Kuning dengan bintang hijau', 'Herbal dengan standar ilmiah', 'Ekstrak tanaman herbal standar', 'Apotek, Toko Kesehatan', '2025-12-17 00:00:00'),
+(7, 'Jamu', 'obat_jamu.png', 'Jamu merupakan obat yang terbuat dari bahan herbal atau alami yang sudah dipercaya secara turun-temurun dapat mengatasi keluhan atau penyakit tertentu. Obat ini ditandai dengan adanya logo lingkaran putih dengan garis tepi berwarna hijau yang di dalamnya terdapat gambar tumbuhan atau pohon berwarna hijau. Pilihan obat golongan jamu yang dijual di pasaran sangat banyak.', 'Putih dengan tumbuhan hijau', 'Obat tradisional turun-temurun', 'Daun wungu, Kunyit, Temulawak, Ekstrak buah pinang', 'Toko Jamu, Pasar, Toko Kesehatan', '2025-12-17 00:00:00');
