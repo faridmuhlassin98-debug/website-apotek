@@ -1,61 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3307
--- Generation Time: Dec 07, 2025 at 12:15 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `apotek_mini`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `obat`
---
+CREATE DATABASE IF NOT EXISTS apotek_mini;
+USE apotek_mini;
 
 CREATE TABLE `obat` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(100) NOT NULL,
   `harga` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
   `gambar` varchar(255) DEFAULT NULL,
   `keterangan` text DEFAULT NULL,
   `terjual` int(11) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `obat`
---
 
 INSERT INTO `obat` (`id`, `nama`, `harga`, `stok`, `gambar`, `keterangan`, `terjual`, `created_at`) VALUES
 (1, 'PARACETAMOL(500mg)', 7000, 100, 'paracetamol.jpg', 'Obat pereda demam dan nyeri', 150, '2025-12-07 09:17:53'),
 (2, 'AMOXICILLIN(500mg)', 10000, 80, 'amoxicillin.jpg', 'Antibiotik untuk infeksi bakteri', 120, '2025-12-07 09:17:53'),
 (3, 'BIOPLACENTON(15g)', 30000, 150, 'bioplacenton.jpg', 'Suplemen vitamin C untuk daya tahan tubuh', 200, '2025-12-07 09:17:53'),
-(4, 'DEXAMETHASONE(0,5mg)',5000, 60, 'dexamethasone.jpg', 'Obat batuk berdahak', 90, '2025-12-07 09:17:53'),
-(5, 'ANTIMO DIMENHYDRINATE', 5000, 70, 'antimo.jpg', 'Obat maag dan asam lambung', 85, '2025-12-07 09:17:53'),
-(6, 'Promag', 12000, 90, 'promagh.jpg', 'Obat untuk mengatasi maag', 110, '2025-12-07 09:17:53'),
-
--- --------------------------------------------------------
--- Table structure for table `transaksi`
---
+(4, 'DEXAMETHASONE(0,5mg)', 5000, 60, 'dexamethasone.jpg', 'Obat anti inflamasi dan alergi', 90, '2025-12-07 09:17:53'),
+(5, 'ANTIMO DIMENHYDRINATE', 5000, 70, 'antimo.jpg', 'Obat mabuk perjalanan', 85, '2025-12-07 09:17:53'),
+(6, 'Promag', 12000, 90, 'promag.jpg', 'Obat untuk mengatasi maag', 110, '2025-12-07 09:17:53');
 
 CREATE TABLE `transaksi` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_obat` int(11) NOT NULL,
   `nama_pembeli` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
@@ -63,54 +30,10 @@ CREATE TABLE `transaksi` (
   `jumlah` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `status` varchar(50) DEFAULT 'Menunggu Konfirmasi',
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `id_obat` (`id_obat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `obat`
---
-ALTER TABLE `obat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_obat` (`id_obat`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `obat`
---
-ALTER TABLE `obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `transaksi`
---
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
