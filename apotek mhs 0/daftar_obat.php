@@ -62,7 +62,7 @@ $result = mysqli_query($conn, $query);
                 <div class="obat-grid">
                     <?php while ($obat = mysqli_fetch_assoc($result)): ?>
                         <div class="obat-card">
-                            <img src="img/<?php echo $obat['gambar']; ?>" alt="<?php echo $obat['nama']; ?>"
+                            <img src="images/<?php echo $obat['gambar']; ?>" alt="<?php echo $obat['nama']; ?>"
                                 onerror="this.src='https://via.placeholder.com/300x200?text=Obat'">
                             <div class="obat-card-content">
                                 <h3><?php echo $obat['nama']; ?></h3>

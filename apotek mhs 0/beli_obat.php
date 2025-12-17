@@ -114,7 +114,7 @@ if (isset($_POST['beli'])) {
 
                     <div class="detail-grid">
                         <div class="product-image">
-                            <img src="img/<?php echo $obat['gambar']; ?>"
+                            <img src="images/<?php echo $obat['gambar']; ?>"
                                 alt="<?= htmlspecialchars($obat['nama'] ?? 'Obat') ?>">
                             <div class="product-info">
                                 <h2><?= htmlspecialchars($obat['nama'] ?? 'Paracetamol 500mg') ?></h2>

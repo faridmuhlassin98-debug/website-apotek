@@ -37,3 +37,26 @@ CREATE TABLE `transaksi` (
 
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id`);
+
+CREATE TABLE IF NOT EXISTS `golongan_obat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `simbol_warna` varchar(50) DEFAULT NULL,
+  `keterangan_singkat` varchar(200) DEFAULT NULL,
+  `contoh_obat` text DEFAULT NULL,
+  `tempat_penjualan` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO `golongan_obat` (`id`, `nama`, `gambar`, `deskripsi`, `simbol_warna`, `keterangan_singkat`, `contoh_obat`, `tempat_penjualan`, `created_at`) VALUES
+(1, 'Obat Bebas', 'INFO 1.png', 'Obat bebas atau over the counter (OTC) ditandai dengan logo bulat atau lingkaran hijau dengan garis tepi berwarna hitam. Obat ini dijual secara bebas dan dapat dibeli di warung, toko obat, serta apotek tanpa resep dokter. Meski bisa dibeli secara bebas, Anda perlu mengonsumsi obat bebas sesuai aturan yang tertera pada kemasan. Jika dikonsumsi secara berlebih, ada risiko gangguan kesehatan yang mengintai. Misalnya, konsumsi paracetamol dalam jangka panjang atau dosisnya berlebih dapat menyebabkan kerusakan hati.', 'Hijau', 'Dapat dibeli tanpa resep dokter', 'Paracetamol, Ibuprofen, Antasida', 'Warung, Toko Obat, Apotek', '2025-12-17 00:00:00'),
+(2, 'Obat Bebas Terbatas', 'INFO 2.png', 'Obat bebas terbatas termasuk dalam golongan obat yang dapat diperoleh tanpa resep dokter dan dapat dibeli di warung, toko obat, serta apotek. Namun, ada peringatan terkait takaran dan aturan khusus dalam penggunaannya, seperti obat kumur maupun obat oles khusus bagian luar tubuh. Tanda dari obat bebas terbatas adalah adanya logo bulat atau lingkaran biru bergaris tepi hitam.', 'Biru', 'Memiliki peringatan khusus penggunaan', 'Chlorpheniramine, Mebendazole, Dekstrometorfan, Cetirizine, Terbinafine', 'Warung, Toko Obat, Apotek', '2025-12-17 00:00:00'),
+(3, 'Obat Keras', 'INFO 3.png', 'Obat keras ditandai dengan logo lingkaran berwarna merah dengan garis tepi berwarna hitam dan huruf K di tengah yang menyentuh garis tepi. Obat keras tidak bisa dibeli secara sembarangan karena memerlukan resep dokter. Obat golongan ini memang sering dijual di apotek atau toko obat online, tetapi pembelian dan penggunaannya harus sesuai anjuran dokter untuk mencegah efek samping dan penyalahgunaan obat.', 'Merah', 'Hanya dengan resep dokter', 'Antibiotik, Obat Jantung, Obat Hipertensi', 'Apotek (dengan resep)', '2025-12-17 00:00:00'),
+(4, 'Obat Golongan Narkotika', 'INFO 4.png', 'Simbol dari obat golongan narkotika berupa lingkaran merah dengan logo seperti tanda plus di dalamnya. Obat golongan narkotika tidak boleh dikonsumsi sembarangan karena bisa menyebabkan penyalahgunaan maupun ketergantungan obat. Oleh karena itu, obat ini hanya bisa diperoleh dengan resep dokter dan dikonsumsi di bawah pengawasannya. Obat ini terbuat dari tanaman, bahan sintetis, atau semisintetis yang dapat menurunkan kesadaran atau menghilangkan rasa nyeri.', 'Merah dengan plus', 'Ketat, hanya dengan resep khusus', 'Codeine, Morfin, Tramadol, Diazepam, Phenobarbital', 'Apotek (dengan resep khusus)', '2025-12-17 00:00:00'),
+(5, 'Obat Fitofarmaka', 'INFO 5.png', 'Golongan obat fitofarmaka ditandai dengan logo kristal salju berwarna hijau di dalam lingkaran kuning dengan garis tepi berwarna hijau. Fitofarmaka merupakan obat herbal atau obat tradisional dari bahan alami yang sudah teruji secara klinis dan produknya telah memenuhi standar yang ditetapkan.', 'Kuning dengan hijau', 'Herbal teruji klinis', 'Ekstrak meniran hijau, Kayu manis dan bunga bungur', 'Apotek, Toko Kesehatan', '2025-12-17 00:00:00'),
+(6, 'Obat Herbal Terstandar', 'INFO 6.png', 'Obat herbal terstandar (OHT) ditandai dengan simbol lingkaran kuning bergaris tepi hijau dengan tiga bintang hijau di dalamnya. Golongan obat ini terbuat dari ekstrak atau penyaringan bahan alami, seperti tanaman obat, bagian tubuh hewan, maupun mineral yang sudah teruji secara ilmiah atau penelitian praklinis.', 'Kuning dengan bintang hijau', 'Herbal dengan standar ilmiah', 'Ekstrak tanaman herbal standar', 'Apotek, Toko Kesehatan', '2025-12-17 00:00:00'),
+(7, 'Jamu', 'INFO 7.png', 'Jamu merupakan obat yang terbuat dari bahan herbal atau alami yang sudah dipercaya secara turun-temurun dapat mengatasi keluhan atau penyakit tertentu. Obat ini ditandai dengan adanya logo lingkaran putih dengan garis tepi berwarna hijau yang di dalamnya terdapat gambar tumbuhan atau pohon berwarna hijau. Pilihan obat golongan jamu yang dijual di pasaran sangat banyak.', 'Putih dengan tumbuhan hijau', 'Obat tradisional turun-temurun', 'Daun wungu, Kunyit, Temulawak, Ekstrak buah pinang', 'Toko Jamu, Pasar, Toko Kesehatan', '2025-12-17 00:00:00');
