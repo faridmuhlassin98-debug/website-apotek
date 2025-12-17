@@ -6,16 +6,14 @@ session_start();
 // Ambil obat terlaris
 $query_terlaris = "SELECT * FROM obat ORDER BY terjual DESC LIMIT 3";
 $result_terlaris = mysqli_query($conn, $query_terlaris);
-$sql = "SELECT * FROM golongan_obat ORDER BY id";
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda - Apotek Mahasiswa</title>
+    <title>Beranda - Medivo Store</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
@@ -28,7 +26,7 @@ $sql = "SELECT * FROM golongan_obat ORDER BY id";
                 <button class="toggle-btn" onclick="toggleSidebar()">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1>MEDIFO</h1>
+                <h1>Medivo Store</h1>
             </div>
             <div class="header-right">
                 <i class="fas fa-capsules" style="font-size: 1.5rem;"></i>
@@ -52,16 +50,23 @@ $sql = "SELECT * FROM golongan_obat ORDER BY id";
                 <i class="fas fa-file-invoice"></i>
                 Transaksi
             </a>
+            <a href="informasi_obat.php" class="<?= basename($_SERVER['PHP_SELF']) == 'informasi_obat.php' ? 'active' : '' ?>">
+                <i class="fas fa-info-circle"></i>
+                Informasi Obat
+            </a>
         </nav>
     </div>
 
+    <!-- Main Content -->
     <div class="main-content" id="mainContent">
         <div class="container">
+            <!-- Hero Section -->
             <div class="card hero-card">
-                <h1>Selamat Datang di Apotek Mahasiswa</h1>
+                <h1>Selamat Datang di Medivo Store</h1>
                 <p>Solusi kesehatan terpercaya untuk mahasiswa</p>
             </div>
 
+            <!-- Layanan -->
             <div class="card">
                 <h2 style="color: var(--hitam); margin-bottom: 1.5rem;">
                     <i class="fas fa-concierge-bell"></i> Layanan Kami
@@ -87,90 +92,100 @@ $sql = "SELECT * FROM golongan_obat ORDER BY id";
                     Beli Obat Sekarang
                 </a>
             </div>
+
+            <!-- INFORMASI OBAT - KLIK LANGSUNG KE FITUR -->
             <div class="card">
-                <h2 style="color: var(--hitam) " margin-bottom: 1,5rem;>
-                    <i class="fa-solid fa-circle-info"></i> Informasi Obat
-                </h2>
-                <div class="golongan-container">
-                    <?php
-                    $result = mysqli_query($conn, $sql);
-                    while ($row = mysqli_fetch_assoc($result)):
-                        ?>
-                        <div class="golongan-card">
-                            <?php if ($row['gambar']): ?>
-                                <img src="images/<?php echo htmlspecialchars($row['gambar']); ?>"
-                                    alt="<?php echo htmlspecialchars($row['nama']); ?>" class="gambar-obat"
-                                    style="width: 10%; height: auto;">
-                            <?php endif; ?>
-
-                            <h3>
-                                <span class="simbol"
-                                    style="background-color: <?php echo htmlspecialchars($row['simbol_warna']); ?>"></span>
-                                <?php echo htmlspecialchars($row['nama']); ?>
-                            </h3>
-
-                            <p><strong>Keterangan:</strong> <?php echo htmlspecialchars($row['keterangan_singkat']); ?>
-                            </p>
-
-                            <p><strong>Tempat
-                                    Penjualan:</strong><br><?php echo htmlspecialchars($row['tempat_penjualan']); ?></p>
-
-                            <div class="contoh-obat">
-                                <strong>Contoh Obat:</strong><br>
-                                <?php echo htmlspecialchars($row['contoh_obat']); ?>
-                            </div>
-
-                            <p><?php echo htmlspecialchars(substr($row['deskripsi'], 0, )); ?></p>
+                <a href="informasi_obat.php" style="text-decoration: none; color: inherit; display: block;">
+                    <div style="display: flex; align-items: center; padding: 2rem; cursor: pointer; transition: all 0.3s ease; border-radius: inherit;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(102,126,234,0.3);">
+                            <i class="fas fa-info-circle" style="color: white; font-size: 1.8rem;"></i>
                         </div>
-                    <?php endwhile; ?>
-                </div>
+                        <div style="flex: 1;">
+                            <h2 style="color: var(--hitam); margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: 700;">
+                                Informasi Golongan Obat
+                            </h2>
+                            <p style="color: #666; margin: 0; font-size: 1rem; line-height: 1.6;">
+                                Kenali 7 golongan obat resmi Indonesia beserta logo, ciri khas, dan aturan penggunaannya
+                            </p>
+                        </div>
+                        <div style="color: #667eea; font-size: 1.3rem; font-weight: 600; opacity: 0.8;">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
 
-        <div class="card">
-            <h2 style="color: var(--hitam); margin-bottom: 1.5rem;">
-                <i class="fas fa-star"></i> Obat Terlaris
-            </h2>
-            <div class="obat-grid">
-                <?php
-                $rank = 1;
-                while ($obat = mysqli_fetch_assoc($result_terlaris)):
-                    ?>
+            <!-- Obat Terlaris -->
+            <div class="card">
+                <h2 style="color: var(--hitam); margin-bottom: 1.5rem;">
+                    <i class="fas fa-star"></i> Obat Terlaris
+                </h2>
+                <div class="obat-grid">
+                    <!-- Obat 1 -->
                     <div class="obat-card">
                         <div style="position: relative;">
-                            <img src="images/<?php echo $obat['gambar']; ?>" alt="<?php echo $obat['nama']; ?>"
-                                onerror="this.src='https://via.placeholder.com/300x200?text=Obat'">
-                            <div class="badge">#<?php echo $rank++; ?></div>
+                            <img src="paracetamol.jpg" alt="Paracetamol">
+                            <div class="badge">#1</div>
                         </div>
                         <div class="obat-card-content">
-                            <h3><?php echo $obat['nama']; ?></h3>
-                            <p><?php echo $obat['keterangan']; ?></p>
-                            <div class="obat-price">Rp <?php echo number_format($obat['harga'], 0, ',', '.'); ?>
-                            </div>
-                            <div class="obat-stock">Terjual: <?php echo $obat['terjual']; ?> pcs</div>
-                            <a href="beli_obat.php?id=<?php echo $obat['id']; ?>"
-                                class="btn btn-primary btn-block btn-icon">
+                            <h3>Paracetamol 500mg</h3>
+                            <p>Meredakan demam dan nyeri ringan-sedang</p>
+                            <div class="obat-price">Rp 7.000</div>
+                            <div class="obat-stock">Terjual: 200 pcs</div>
+                            <a href="beli_obat.php?id=1" class="btn btn-primary btn-block btn-icon">
                                 <i class="fas fa-shopping-cart"></i>
                                 Beli
                             </a>
                         </div>
                     </div>
-                <?php endwhile; ?>
+
+                    <!-- Obat 2 -->
+                    <div class="obat-card">
+                        <div style="position: relative;">
+                            <img src="amoxicillin.jpg" alt="Amoxicillin">
+                            <div class="badge">#2</div>
+                        </div>
+                        <div class="obat-card-content">
+                            <h3>Amoxicillin 500mg</h3>
+                            <p>Antibiotik untuk infeksi bakteri</p>
+                            <div class="obat-price">Rp 10.000</div>
+                            <div class="obat-stock">Terjual: 150 pcs</div>
+                            <a href="beli_obat.php?id=2" class="btn btn-primary btn-block btn-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                Beli
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Obat 3 -->
+                    <div class="obat-card">
+                        <div style="position: relative;">
+                            <img src="bioplacenton.jpg" alt="Bioplacenton">
+                            <div class="badge">#3</div>
+                        </div>
+                        <div class="obat-card-content">
+                            <h3>Bioplacenton</h3>
+                            <p>Obat untuk luka ringan, luka bakar, dan infeksi kulit</p>
+                            <div class="obat-price">Rp 30.000</div>
+                            <div class="obat-stock">Terjual: 120 pcs</div>
+                            <a href="beli_obat.php?id=3" class="btn btn-primary btn-block btn-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                Beli
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-
 
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
-
             sidebar.classList.toggle('hidden');
             mainContent.classList.toggle('expanded');
         }
     </script>
 </body>
-
 </html>

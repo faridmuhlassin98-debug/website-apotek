@@ -7,7 +7,7 @@ $password = '';
 $database = 'apotek_mini';
 
 // Membuat koneksi
-$conn = mysqli_connect($host, $username, $password, $database);
+$conn = mysqli_connect($host, $username, $password, $database, port:3307);
 
 // Cek koneksi
 if (!$conn) {
